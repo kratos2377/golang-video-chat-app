@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/websocket/v2"
 )
 
-func RoomChat(c *fiber.Ctx) {
+func RoomChat(c *fiber.Ctx) error {
 	return c.Render("chat", fiber.Map{}, "layouts/main")
 }
 
@@ -34,13 +34,13 @@ func RoomChatWebsocket(c *websocket.Conn) {
 
 func StreamChatWebSocket(c *websocket.Conn) {
 	suuid := c.Params("suuid")
-	if suuid == nil {
+	if suuid == "" {
 		return
 	}
 
 	w.RoomsLock.Unlock()
 	if stream, ok := w.Streams[suuid]; ok {
-		if stram.Hub == nil {
+		if stream.Hub == nil {
 			hub := chat.NewHub()
 			stream.Hub = hub
 			go hub.Run()

@@ -10,7 +10,6 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/pion/rtcp v1.2.10
 	github.com/pion/webrtc/v3 v3.1.59
-	golang.org/x/net v0.9.0
 )
 
 require (
@@ -43,5 +42,6 @@ require (
 	github.com/valyala/fasthttp v1.45.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/crypto v0.7.0 // indirect
+	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sys v0.7.0 // indirect
 )

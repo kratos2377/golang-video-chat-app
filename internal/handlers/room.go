@@ -5,12 +5,12 @@ import (
 	"os"
 	"time"
 	"videochat/pkg/chat"
-	"videochat/pkg/webrtc"
 	w "videochat/pkg/webrtc"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
 	guuid "github.com/google/uuid"
+	"github.com/pion/webrtc/v3"
 )
 
 func RoomCreate(c *fiber.Ctx) error {

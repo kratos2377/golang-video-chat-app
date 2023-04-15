@@ -8,10 +8,10 @@ import (
 	w "videochat/pkg/webrtc"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html"
 	"github.com/gofiber/websocket/v2"
-	"golang.org/x/net/websocket"
 )
 
 var (
@@ -30,8 +30,8 @@ func Run() error {
 	engine := html.New("./views", ".html")
 
 	app := fiber.New(fiber.Config{Views: engine})
-	app.User(logger.New())
-	app.Use(Cors.New())
+	app.Use(logger.New())
+	app.Use(cors.New())
 	app.Get("/", handlers.Welcome)
 	app.Get("/room/create", handlers.RoomCreate)
 	app.Get("/room/:uuid", handlers.Room)
@@ -45,7 +45,7 @@ func Run() error {
 	app.Get("/stream/:ssuid/websocket", websocket.New(handlers.StreamWebsocket, websocket.Config{
 		HandshakeTimeout: 10 * time.Second,
 	}))
-	app.Get("/stream/ssuid/chat/websocket", websocket.New(handlers.StreamChatWebsocket))
+	app.Get("/stream/ssuid/chat/websocket", websocket.New(handlers.StreamChatWebSocket))
 	app.Get("/stream/:ssuid/viewer/websocket", websocket.New(handlers.StreamViewerWebsocket))
 	app.Static("/", "./assets")
 	w.Rooms = make(map[string]*w.Room)
