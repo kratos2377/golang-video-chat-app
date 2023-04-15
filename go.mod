@@ -1,11 +1,18 @@
-module github.com/kratos2377/golang-video-chat-app
+module videochat
 
 go 1.20
 
 require (
+	github.com/gofiber/fiber/v2 v2.44.0
+	github.com/gofiber/template v1.8.0
+	github.com/gofiber/websocket/v2 v2.1.5
+	github.com/google/uuid v1.3.0
+	golang.org/x/net v0.9.0
+)
+
+require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/gofiber/fiber/v2 v2.44.0 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/fasthttp/websocket v1.5.2 // indirect
 	github.com/klauspost/compress v1.16.3 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect

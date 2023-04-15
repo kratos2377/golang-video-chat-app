@@ -46,5 +46,6 @@ func Run() error {
 	app.Get("/stream/:ssuid" , handlers.Stream)
 	app.Get("/stream/:ssuid/websocket",)
 	app.Get("/stram/ssuid/chat/websocket")
+	app.Get("/stram/:ssuid/viewer/websocket")
 
 }
